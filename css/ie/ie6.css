@@ -1,0 +1,22 @@
+.list-1 li p {zoom: 1;}
+.list-2 {margin: 0 -27px 0 -20px;}
+.list-3 dt, .list-6 dt {zoom: 1;}
+.list-5 li div {zoom: 1;}
+
+nav ul li.act a {
+	background-position: 0% 0%;
+	text-shadow: 1px 1px 0 #31677b;
+	color: #fff;
+}
+
+	nav ul li.act a strong {
+		background-position: 0% 0%;
+	}
+	
+	nav ul li.act a b {
+		background-position: 100% 0%;
+	}
+	
+	nav ul li.act ul li a {
+		color: #000;
+	}
