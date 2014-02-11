@@ -1,11 +1,9 @@
 <li class="extra">
-    <a href="#show_pic_<?php echo $data->personnel_id; ?>" rel='facebox'>
-        <?php
-        echo CHtml::image(Yii::app()->params['pathUpload'] . $data->pic, '', array(
-            'style' => 'width: 100px;',
-        ));
-        ?>
-    </a>
+    <?php
+    echo CHtml::image(Yii::app()->params['pathUpload'] . $data->pic, '', array(
+        'style' => 'width: 100px;',
+    ));
+    ?>
     <p> 
         <strong><?php echo $data->name; ?></strong>
         <label><?php echo $data->tel; ?></label>
@@ -13,6 +11,10 @@
     </p>
     <div id="show_detail_<?php echo $data->personnel_id; ?>" style='display: none;'>
         <?php
+        echo CHtml::image(Yii::app()->params['pathUpload'] . $data->pic, '', array(
+            'style' => 'width: 600px;'
+        ));
+
         $model = Personnel::model()->findByPk($data->personnel_id);
         $this->widget('zii.widgets.CDetailView', array(
             'data' => $model,
@@ -27,13 +29,6 @@
             ),
         ));
         ?>
-    </div>
-    <div id='show_pic_<?php echo $data->personnel_id; ?>' style="display: none;">
-        <?php
-        echo CHtml::image(Yii::app()->params['pathUpload'] . $data->pic, '', array(
-            'style' => 'width: 600px;'
-        ));
-        ?>    
     </div>
 </li>
 
