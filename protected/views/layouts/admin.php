@@ -46,7 +46,7 @@
         </script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="<?php echo Yii::app()->baseUrl; ?>/css/my-css.css" rel="stylesheet" type="text/css" />
-        <link href="<?php echo Yii::app()->baseUrl; ?>/css/tyle.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo Yii::app()->baseUrl; ?>/css/style.min.css" rel="stylesheet" type="text/css" />
     </head>
     <body id="page9">
         <div id="main-tail-top">

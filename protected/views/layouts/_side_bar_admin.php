@@ -86,8 +86,8 @@
                             </div>
                         </div>
                         <ul class="list-2">
-                            <li><a href="#">ข้อมูลการขอใช้บริการที่อนุมัติ</a></li>
-                            <li><a href="#">ข้อมูลการขอใช้บริการที่ไม่อนุมัติ</a></li>
+                            <li><a href="<?php echo Yii::app()->createUrl('/report/accept'); ?>">ข้อมูลการขอใช้บริการที่อนุมัติ</a></li>
+                            <li><a href="<?php echo Yii::app()->createUrl('/report/notAccept'); ?>">ข้อมูลการขอใช้บริการที่ไม่อนุมัติ</a></li>
                         </ul>
                     </div>
                 </div>

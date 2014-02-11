@@ -56,6 +56,12 @@ class PaperApproval extends PaperApprovalBase {
             'consider' => array(
                 'condition' => 't.status = 1',
             ),
+            'accept' => array(
+                'condition' => 't.status = 2',
+            ),
+            'notAccept' => array(
+                'condition' => 't.status = 3',
+            ),
             'desc' => array(
                 'order' => 't.paper_approval_id desc'
             ),
@@ -82,6 +88,9 @@ class PaperApproval extends PaperApprovalBase {
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
         ));
     }
 
@@ -108,6 +117,9 @@ class PaperApproval extends PaperApprovalBase {
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
         ));
     }
 
@@ -132,6 +144,9 @@ class PaperApproval extends PaperApprovalBase {
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
         ));
     }
 
@@ -157,6 +172,9 @@ class PaperApproval extends PaperApprovalBase {
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
         ));
     }
 

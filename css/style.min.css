@@ -1,9 +1,22 @@
-label{
-    width: 100px;
-}
 label span.required{
     color: red;
 }
 .form_image{
     width: 400px;
 }
+.inline{
+    display: inline-block;
+}
+div.form label {
+    display: inline-block;
+    width: 100px;
+}
+.search{
+    background-color: #E6F2FF;
+    border-radius: 10px;
+    padding: 10px;
+}
+.text-center{
+    text-align: center;
+}
+

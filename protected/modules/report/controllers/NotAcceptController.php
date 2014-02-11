@@ -1,6 +1,6 @@
 <?php
 
-class AcceptController extends Controller {
+class NotAcceptController extends Controller {
 
     public $layout = '//layouts/admin';
     public $nameController = 'รายงานข้อมูลขอใช้รถยนต์ส่วนกลาง';
@@ -35,7 +35,7 @@ class AcceptController extends Controller {
 
         $criteria = new CDbCriteria;
         $criteria->with = array('member', 'place');
-        $criteria->scopes = array('desc', 'accept');
+        $criteria->scopes = array('desc', 'notAccept');
 
         if (isset($_GET['PaperApproval'])) {
             $paper->attributes = $_GET['PaperApproval'];
@@ -90,7 +90,7 @@ class AcceptController extends Controller {
 
         $criteria = new CDbCriteria;
         $criteria->with = array('member', 'place');
-        $criteria->scopes = array('desc', 'accept');
+        $criteria->scopes = array('desc', 'notAccept');
 
         if (isset($_POST['SearchMonth'])) {
             $model->attributes = $_POST['SearchMonth'];

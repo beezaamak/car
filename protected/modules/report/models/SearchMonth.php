@@ -7,7 +7,7 @@ class SearchMonth extends CFormModel {
 
     public function rules() {
         return array(
-            array('year, month', 'required'),
+            array('year', 'required', 'message' => 'กรุณาเลือก {attribute}'),
         );
     }
 
