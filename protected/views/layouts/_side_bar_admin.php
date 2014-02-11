@@ -20,17 +20,21 @@
                         </table>
                         <?php
                     } else {
-                        ?>
-                        <div class="inner">
-                            <div class="wrapper">
-                                <h2>จัดการ</h2>
+                        if ($this->menu != null) {
+                            ?>
+                            <div class="inner">
+                                <div class="wrapper">
+                                    <h2>จัดการ</h2>
+                                </div>
                             </div>
-                        </div>
-                        <?php
-                        $this->widget('zii.widgets.CMenu', array(
-                            'items' => $this->menu,
-                            'htmlOptions' => array('class' => 'list-2'),
-                        ));
+                            <?php
+                            $this->widget('zii.widgets.CMenu', array(
+                                'items' => $this->menu,
+                                'htmlOptions' => array('class' => 'list-2'),
+                            ));
+                            ?>
+                            <?php
+                        }
                         ?>
                     </div>
                 </div>
@@ -45,10 +49,12 @@
                         </div>
                     </div>
                     <ul class="list-2">
-                        <li><a href="#">ข้อมูลสมาชิก</a></li>
-                        <li><a href="#">ข้อมูลรถยนต์ส่วนกลาง</a></li>
-                        <li><a href="#">ข้อมูลพนักงานขับรถ</a></li>
-                        <li><a href="#">ข่าวประชาสัมพันธ์</a></li>
+                        <li><a href="<?php echo Yii::app()->createUrl('/car'); ?>">ข้อมูลรถยนต์ส่วนกลาง</a></li>
+                        <li><a href="<?php echo Yii::app()->createUrl('/personnel'); ?>">ข้อมูลพนักงานขับรถ</a></li>
+                        <li><a href="<?php echo Yii::app()->createUrl('/position'); ?>">ข้อมูลตำแหน่ง</a></li>
+                        <li><a href="<?php echo Yii::app()->createUrl('/brand'); ?>">ข้อมูลยี่ห้อ</a></li>
+                        <li><a href="<?php echo Yii::app()->createUrl('/place'); ?>">ข้อมูลจุดนัดขึ้นรถ</a></li>
+                        <li><a href="<?php echo Yii::app()->createUrl('/news'); ?>">ข่าวประชาสัมพันธ์</a></li>
                     </ul>
                 </div>
             </div>
@@ -63,8 +69,8 @@
                             </div>
                         </div>
                         <ul class="list-2">
-                            <li><a href="#">รับเรื่องการขอใช้บริการ</a></li>
-                            <li><a href="#">ตรวจสอบและพิจารณา</a></li>
+                            <li><a href="<?php echo Yii::app()->createUrl('/paperApprovalList'); ?>">รับเรื่องการขอใช้บริการ</a></li>
+                            <li><a href="<?php echo Yii::app()->createUrl('/consider'); ?>">ตรวจสอบและพิจารณา</a></li>
                         </ul>
                     </div>
                 </div>

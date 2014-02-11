@@ -8,6 +8,7 @@
         <link href="<?php echo Yii::app()->baseUrl; ?>/css/reset.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo Yii::app()->baseUrl; ?>/css/layout.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo Yii::app()->baseUrl; ?>/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo Yii::app()->baseUrl; ?>/css/style.min.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/dropdown.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.faded.js"></script>
@@ -51,7 +52,7 @@
                                 <section id="content">
                                     <div id="indent">
                                         <div class="wrapper-1">
-                                            <?php $this->renderPartial('//layouts/_side_bar'); ?>
+                                            <?php $this->renderPartial('//layouts/_side_bar_main'); ?>
                                             <?php echo $content; ?>
                                             <div class="clear">
                                                 <p>&nbsp;</p>

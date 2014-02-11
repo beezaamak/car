@@ -4,12 +4,24 @@ class Car extends CarBase {
 
     public function rules() {
         return array(
-            array('license_no, date_registration, brand_id, car_no, engine_no, personnel_id, create_at', 'required'),
+            array('license_no, date_registration, brand_id, car_no, engine_no, personnel_id, pic, create_at', 'required'),
             array('brand_id, personnel_id', 'numerical', 'integerOnly' => true),
             array('license_no, car_no, engine_no', 'length', 'max' => 100),
-            array('car_id, license_no, date_registration, brand_id, car_no, engine_no, personnel_id, create_at', 'safe', 'on' => 'search'),
+            array('pic', 'length', 'max' => 255),
+            array('car_id, license_no, date_registration, brand_id, car_no, engine_no, personnel_id, pic, create_at', 'safe', 'on' => 'search'),
             // เพิ่มเติม
             array('car_no, license_no, engine_no', 'unique', 'message' => '{value} มีอยู่ในระบบแล้ว กรุณาตรวจสอบ'),
+        );
+    }
+
+    public function scopes() {
+        return array(
+            'desc' => array(
+                'order' => 't.car_id desc'
+            ),
+            'notWorking' => array(
+                'condition' => 't.status = 0',
+            ),
         );
     }
 
@@ -31,6 +43,7 @@ class Car extends CarBase {
             'engine_no' => 'เลขเเครื่องยนต์',
             'personnel_id' => 'พนักงานขับรถ',
             'create_at' => 'วันที่บันทึก',
+            'pic' => 'รูปภาพ',
         );
     }
 

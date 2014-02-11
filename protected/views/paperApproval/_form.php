@@ -66,11 +66,13 @@
         ?>
         <?php echo $form->error($model, 'place_id'); ?>
     </div>
-
+    <?php
+    Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
+    ?>
     <div class="row div50">
         <?php echo $form->labelEx($model, 'departure_time'); ?>
         <?php
-        $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+        $this->widget('CJuiDateTimePicker', array(
             'model' => $model,
             'attribute' => 'departure_time',
             'language' => 'th',
@@ -91,7 +93,7 @@
     <div class="row div50">
         <?php echo $form->labelEx($model, 'back_time'); ?>
         <?php
-        $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+        $this->widget('CJuiDateTimePicker', array(
             'model' => $model,
             'attribute' => 'back_time',
             'language' => 'th',

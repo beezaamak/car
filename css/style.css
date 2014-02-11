@@ -866,12 +866,13 @@ h6 em {
 }
 
 .list-1 li {
-    float: left;
+    /*float: left;*/
     width: 292px;
     padding: 0 35px 34px 0;
 }
 
 .list-1 li.extra {
+    display: inline-flex;
     padding: 0 0 34px 0;
 }
 

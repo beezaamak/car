@@ -12,19 +12,19 @@
 </ul>
 <nav>
     <ul>
-        <li><a href="index.html"><strong>หน้าหลัก</strong></a></li>
-        <li><a href="Car_goTo.html">ตารางการเดินรถ</a></li>
+        <li><a href="<?php echo Yii::app()->createUrl('/site/index'); ?>"><strong>หน้าหลัก</strong></a></li>
+        <li><a href="<?php echo Yii::app()->createUrl('#'); ?>">ตารางการเดินรถ</a></li>
         <li> <a href="#"><em>บริการ</em></a>
             <ul>
-                <li><i><a href="how_to.html">วิธีการขออนุญาตใช้รถ</a></i></li>
-                <li><a href="car.html">ข้อมูลรถยนต์ส่วนกลาง</a></li>
-                <li><a href="cardri.html">ข้อมูลพนักงานขับรถ</a></li>
+                <li><i><a href="<?php echo Yii::app()->createUrl('/site/howto'); ?>">วิธีการขออนุญาตใช้รถ</a></i></li>
+                <li><a href="<?php echo Yii::app()->createUrl('/carList'); ?>">ข้อมูลรถยนต์ส่วนกลาง</a></li>
+                <li><a href="<?php echo Yii::app()->createUrl('personnelList'); ?>">ข้อมูลพนักงานขับรถ</a></li>
 
 
             </ul>
         </li>
-        <li><a href="new.html">ข่าวประชาสัมพันธ์</a></li>
-        <li><a href="about.html">เกี่ยวกับเรา</a></li>
+        <li><a href="<?php echo Yii::app()->createUrl('/newsList'); ?>">ข่าวประชาสัมพันธ์</a></li>
+        <li><a href="<?php echo Yii::app()->createUrl('/site/about'); ?>">เกี่ยวกับเรา</a></li>
         <li class="last"><a href="<?php echo Yii::app()->createUrl('/site/logout'); ?>"><b>ออกจากระบบ</b></a></li>
     </ul>
 </nav>

@@ -15,4 +15,9 @@ $this->menu = array(
 
 <h2><?php echo $this->labelController['Update']; ?> # <?php echo $model->car_no; ?></h2>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php
+$this->renderPartial('_form', array(
+    'model' => $model,
+    'file' => $file,
+));
+?>

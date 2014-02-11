@@ -1,67 +1,36 @@
 <?php
 
-/**
- * This is the model class for table "tbl_member".
- *
- * The followings are the available columns in table 'tbl_member':
- * @property integer $member_id
- * @property string $name
- * @property string $address
- * @property string $tel
- * @property string $email
- * @property integer $status
- * @property string $create_at
- *
- * The followings are the available model relations:
- * @property PaperApproval[] $paperApprovals
- */
 class MemberBase extends CActiveRecord
 {
-	/**
-	 * @return string the associated database table name
-	 */
 	public function tableName()
 	{
 		return 'tbl_member';
 	}
-
-	/**
-	 * @return array validation rules for model attributes.
-	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
-			array('name, address, tel, email, status, create_at', 'required'),
+			array('username, password, name, address, tel, email, status, create_at', 'required'),
 			array('status', 'numerical', 'integerOnly'=>true),
-			array('name, address, email', 'length', 'max'=>255),
+			array('username, password, name, address, email', 'length', 'max'=>255),
 			array('tel', 'length', 'max'=>10),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('member_id, name, address, tel, email, status, create_at', 'safe', 'on'=>'search'),
+			array('member_id, username, password, name, address, tel, email, status, create_at', 'safe', 'on'=>'search'),
 		);
 	}
-
-	/**
-	 * @return array relational rules.
-	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
 		return array(
+			'news' => array(self::HAS_MANY, 'News', 'member_id'),
 			'paperApprovals' => array(self::HAS_MANY, 'PaperApproval', 'member_id'),
+			'paperDetails' => array(self::HAS_MANY, 'PaperDetail', 'member_id'),
+			'paperDetailAccepts' => array(self::HAS_MANY, 'PaperDetailAccept', 'member_id'),
 		);
 	}
-
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
 	public function attributeLabels()
 	{
 		return array(
 			'member_id' => 'รหัส',
+			'username' => 'รหัสผู้ใช้',
+			'password' => 'รหัสผ่าน',
 			'name' => 'ชื่อ - นามสกุล',
 			'address' => 'ที่อยู่',
 			'tel' => 'โทรศัพท์',
@@ -70,26 +39,24 @@ class MemberBase extends CActiveRecord
 			'create_at' => 'สร้างเมื่อ',
 		);
 	}
-
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 *
-	 * Typical usecase:
-	 * - Initialize the model fields with values from filter form.
-	 * - Execute this method to get CActiveDataProvider instance which will filter
-	 * models according to data in model fields.
-	 * - Pass data provider to CGridView, CListView or any similar widget.
-	 *
-	 * @return CActiveDataProvider the data provider that can return the models
-	 * based on the search/filter conditions.
-	 */
+        
+        public function scopes(){
+        return array(
+            'desc' => array(
+                'order' => 't.member_id desc'
+            ),
+        );
+    }
+        
 	public function search()
 	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+                $criteria->scopes = array('desc');
 
 		$criteria->compare('member_id',$this->member_id);
+		$criteria->compare('username',$this->username,true);
+		$criteria->compare('password',$this->password,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('address',$this->address,true);
 		$criteria->compare('tel',$this->tel,true);
@@ -99,15 +66,12 @@ class MemberBase extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+                        'pagination' => array(
+                            'pageSize' => Yii::app()->params['pageSize'],
+                        ),
 		));
 	}
 
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return MemberBase the static model class
-	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);

@@ -9,9 +9,9 @@ class PaperApprovalBase extends CActiveRecord {
     public function rules() {
         return array(
             array('paper_no, member_id, tel, go, request, length_go, num_person, responsible, place_id, departure_time, back_time, status, create_at', 'required'),
-            array('member_id, responsible, place_id, status', 'numerical', 'integerOnly' => true),
+            array('member_id, place_id, status', 'numerical', 'integerOnly' => true),
             array('paper_no', 'length', 'max' => 100),
-            array('tel, go, request, length_go', 'length', 'max' => 255),
+            array('tel, go, request, length_go, responsible', 'length', 'max' => 255),
             array('num_person', 'length', 'max' => 10),
             array('paper_approval_id, paper_no, member_id, tel, go, request, length_go, num_person, responsible, place_id, departure_time, back_time, status, create_at', 'safe', 'on' => 'search'),
         );
@@ -21,6 +21,8 @@ class PaperApprovalBase extends CActiveRecord {
         return array(
             'member' => array(self::BELONGS_TO, 'Member', 'member_id'),
             'place' => array(self::BELONGS_TO, 'Place', 'place_id'),
+            'paperDetails' => array(self::HAS_MANY, 'PaperDetail', 'paper_id'),
+            'paperDetailAccepts' => array(self::HAS_MANY, 'PaperDetailAccept', 'paper_id'),
         );
     }
 
@@ -64,7 +66,7 @@ class PaperApprovalBase extends CActiveRecord {
         $criteria->compare('request', $this->request, true);
         $criteria->compare('length_go', $this->length_go, true);
         $criteria->compare('num_person', $this->num_person, true);
-        $criteria->compare('responsible', $this->responsible);
+        $criteria->compare('responsible', $this->responsible, true);
         $criteria->compare('place_id', $this->place_id);
         $criteria->compare('departure_time', $this->departure_time, true);
         $criteria->compare('back_time', $this->back_time, true);

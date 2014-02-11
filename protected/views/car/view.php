@@ -31,6 +31,14 @@ $this->widget('zii.widgets.CDetailView', array(
             'name' => 'create_at',
             'value' => Tools::DateTimeToShow($model->create_at, '/', false),
         ),
+        array(
+            'type' => 'raw',
+            'name' => 'pic',
+            'value' => CHtml::image(Yii::app()->params['pathUpload'] . $model->pic, '', array(
+//                'class' => 'form_image',
+                'style' => 'width: 430px;'
+            )),
+        ),
     ),
 ));
 ?>

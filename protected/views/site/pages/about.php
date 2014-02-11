@@ -1,12 +1,29 @@
-<?php
-/* @var $this SiteController */
-
-$this->pageTitle=Yii::app()->name . ' - About';
-$this->breadcrumbs=array(
-	'About',
-);
-?>
-<h1>About</h1>
-
-<p>This is a "static" page. You may change the content of this page
-by updating the file <code><?php echo __FILE__; ?></code>.</p>
+<table width="595" height="36" border="1" align="center" cellpadding="1" cellspacing="1">
+    <tr>
+        <td><p><img src="images/Untitled-1.png" width="600" height="312"></p></td>
+    </tr>
+</table>
+<p><strong>ชื่อหน่วยงาน</strong><strong> </strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;หน่วยยานพาหนะ  งานอาคารสถานที่และยานพาหนะ กองกลาง สำนักงานอธิการบดี มหาวิทยาลัยราชภัฏสกลนคร <br>
+    <strong>ที่อยู่</strong><br>
+    &nbsp;&nbsp;   เลขที่ 680  ถนนนิตโย   ตำบลธาตุเชิงชุม   อำเภอเมืองจังหวัดสกลนคร   47000  โทรศัพท์/โทรสาร 0 4297 0249  โทร.(ภายใน)318 <strong></strong><br>
+    <strong>สถานที่ตั้ง</strong><strong> </strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;หน่วยยานพาหนะ ตั้งอยู่ที่มหาวิทยาลัยราชภัฏสกลนคร&nbsp;โดยมีสำนักงานอยู่ริมหนองไฮ  ใกล้คณะเทคโนโลยีการเกษตร<strong> </strong><br>
+    <strong>ปรัชญา </strong><strong> </strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;บริการรวดเร็ว  ฉับไว   ปลอดภัย  ทันต่อเวลา<br>
+    <strong>วิสัยทัศน์</strong><strong> </strong><br>
+    <strong>     </strong>หน่วยยานพาหนะเป็นหน่วยงานที่ให้บริการทางรถยนต์  ด้วยความพร้อมด้านยานพาหนะและพนักงานขับรถ รวมไปถึงความสะดวกสบาย และความพึงพอใจในการให้บริการ<br>
+    <strong>พันธกิจ</strong><strong> </strong><br>
+    <strong>     </strong>1.  บริหารจัดการระบบให้บริการรถยนต์แก่บุคลากรของมหาวิทยาลัย <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.  นำเทคโนโลยีในด้านการใช้รถยนต์มาปรับใช้ในการบริการ <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.  พัฒนาทักษะความรู้ ในการใช้รถยนต์แก่พนักงานขับรถอยู่เสมอ <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.  ตรวจสอบและดูแลสภาพรถยนต์เพื่อให้เกิดความปลอดภัยแก่ผู้ใช้บริการ <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.   คำนึงถึงการใช้พลังงานและทรัพยากรร่วมอย่างมีประสิทธิภาพ <br>
+    <strong>ความรับผิดชอบหลัก</strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รับผิดชอบในการดูแลรักษา  ตรวจสอบสภาพรถยนต์ ขับรถบริการ เพื่อให้ไปถึงจุดมุ่งหมายได้ถูกต้อง และทันเวลา  รับผิดชอบในการจอง จัดตารางให้บริการรถยนต์ ควบคุมตรวจสอบสภาพรถยนต์  เพื่อให้รถยนต์อยู่ในสภาพพร้อมใช้งาน โดยมีรายละเอียดของงาน ดังนี้<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.  งานขับรถยนต์ได้แก่ รับตารางการใช้รถยนต์ วางแผนการเดินทาง ขับรถบริการ  บันทึกผลการขับรถบริการ <br>
+    <strong>      </strong>2.<strong> </strong>งานบำรุงรักษารถยนต์  ได้แก่ตรวจสภาพทั่วไปของรถยนต์ ซ่อมแซมรถยนต์เบื้องต้น ทำความสะอาดรถยนต์  นำรถเข้าตรวจเช็คสภาพตามระยะ นำรถเข้าซ่อมบำรุงที่ศูนย์บริการ <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. งานต่อทะเบียนรถยนต์ได้แก่ ตรวจเช็ควันครบกำหนดต่อทะเบียน นำรถเข้ารับการต่อทะเบียนที่สำนักงานขนส่งจังหวัด </p>
+<p><strong>แผนที่</strong></p>
+<p><img src="images/map_big.jpg" width="601" height="561"></p>
+<p>&nbsp;</p>

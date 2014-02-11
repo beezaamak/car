@@ -2,7 +2,7 @@
 <?php
 $this->breadcrumbs = array(
     $this->nameController => array('admin'),
-    $model->name,
+    $model->paper_no,
 );
 
 $this->menu = array(
@@ -13,24 +13,49 @@ $this->menu = array(
 );
 ?>
 
-<h2><?php echo $this->labelController['View'] . $this->nameController; ?> # <?php echo $model->name; ?></h2>
+<h2><?php echo $this->labelController['View'] . $this->nameController; ?> # <?php echo $model->paper_no; ?></h2>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'paper_approval_id',
-		'paper_no',
-		'member_id',
-		'tel',
-		'go',
-		'request',
-		'length_go',
-		'num_person',
-		'responsible',
-		'place_id',
-		'departure_time',
-		'back_time',
-		'status',
-		'create_at',
-	),
-)); ?>
+<?php
+$this->widget('zii.widgets.CDetailView', array(
+    'data' => $model,
+    'attributes' => array(
+//        'paper_approval_id',
+        'paper_no',
+        array(
+            'name' => 'member_id',
+            'value' => $model->member->name,
+        ),
+        'tel',
+        'go',
+        'request',
+        'length_go',
+        'num_person',
+        'responsible',
+        array(
+            'name' => 'place_id',
+            'value' => $model->place->name,
+        ),
+        array(
+            'name' => 'departure_time',
+            'value' => Tools::DateTimeToShow($model->departure_time, '/', true),
+//            'value' => $model->departure_time,
+        ),
+        array(
+            'name' => 'back_time',
+            'value' => Tools::DateTimeToShow($model->back_time, '/', true),
+        ),
+        'status',
+        'create_at',
+    ),
+));
+?>
+<div class="row buttons">
+    <?php
+    echo CHtml::button('แก้ไขเอกสาร', array(
+        'onClick' => 'window.location="' .
+        Yii::app()->createUrl('paperApproval/update', array(
+            'id' => $model->paper_approval_id
+        )) . '"',
+    ));
+    ?>
+</div>

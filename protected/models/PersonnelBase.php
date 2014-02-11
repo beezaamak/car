@@ -10,9 +10,9 @@ class PersonnelBase extends CActiveRecord {
         return array(
             array('name, position_id, tel, create_at', 'required'),
             array('position_id', 'numerical', 'integerOnly' => true),
-            array('name', 'length', 'max' => 255),
+            array('name, pic', 'length', 'max' => 255),
             array('tel', 'length', 'max' => 11),
-            array('personnel_id, name, position_id, tel, create_at', 'safe', 'on' => 'search'),
+            array('personnel_id, name, position_id, tel, pic, create_at', 'safe', 'on' => 'search'),
         );
     }
 
@@ -29,6 +29,7 @@ class PersonnelBase extends CActiveRecord {
             'name' => 'ชื่อ - นามสกุล',
             'position_id' => 'ตำแหน่ง',
             'tel' => 'โทรศัทพ์',
+            'pic' => 'Pic',
             'create_at' => 'บันทึกเมื่อ',
         );
     }
@@ -50,6 +51,7 @@ class PersonnelBase extends CActiveRecord {
         $criteria->compare('name', $this->name, true);
         $criteria->compare('position_id', $this->position_id);
         $criteria->compare('tel', $this->tel, true);
+        $criteria->compare('pic', $this->pic, true);
         $criteria->compare('create_at', $this->create_at, true);
 
         return new CActiveDataProvider($this, array(

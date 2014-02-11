@@ -29,7 +29,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'position_id',
             'value' => '$data->position->name',
             'htmlOptions' => array(
-                'style' => 'width: 100px; text-align: center;'
+                'style' => 'width: 100px;'
             ),
         ),
         array(

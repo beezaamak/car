@@ -24,11 +24,18 @@ $this->widget('zii.widgets.grid.CGridView', array(
                 'style' => 'width: 50px; text-align: center;'
             )
         ),
-        'paper_no',
+        array(
+            'name' => 'paper_no',
+            'value' => '$data->paper_no',
+            'htmlOptions' => array(
+                'style' => 'width: 100px;',
+            ),
+        ),
         'go',
         array(
             'name' => 'status',
-            'value' => 'Status::paper[$data->status]',
+            'value' => 'Status::$paper[$data->status]',
+//            'value' => '$data->status',
             'htmlOptions' => array(
                 'style' => 'width: 80px;',
             ),

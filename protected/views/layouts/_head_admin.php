@@ -12,9 +12,9 @@
 </ul>
 <nav>
     <ul>
-        <li><a href="index.html"><strong>หน้าหลัก</strong></a></li>
-        <li><a href="#">เกี่ยวกับเรา</a></li>
-        <li> <a href="#"><em>จัดการข้อมูล</em></a>
+        <li><a href="<?php echo Yii::app()->createUrl('/site/index'); ?>"><strong>หน้าหลัก</strong></a></li>
+        <li><a href="<?php echo Yii::app()->createUrl('/site/about'); ?>">เกี่ยวกับเรา</a></li>
+        <li> <a href="<?php echo Yii::app()->createUrl('/admin'); ?>"><em>จัดการข้อมูล</em></a>
             <ul>
                 <li><i><a href="#">ข้อมูลสมาชิก</a></i></li>
                 <li><a href="<?php echo Yii::app()->createUrl('/car'); ?>">ข้อมูลรถยนต์ส่วนกลาง</a></li>
@@ -24,7 +24,7 @@
                 <li><a href="<?php echo Yii::app()->createUrl('/place'); ?>">ข้อมูลจุดนัดขึ้นรถ</a></li>
             </ul>
         </li>
-        <li><a href="#">ข่าวประชาสัมพันธ์</a></li>
+        <li><a href="<?php echo Yii::app()->createUrl('/newsList'); ?>">ข่าวประชาสัมพันธ์</a></li>
         <li><a href="#">การติดต่อ</a></li>
         <li class="last"><a href="<?php echo Yii::app()->createUrl('/site/logout'); ?>"><b>ออกจากระบบ</b> </a></li>
     </ul>

@@ -9,6 +9,7 @@ class Tools {
                 list($date, $_time) = explode(' ', $date);
 
             $_d = explode('-', $date);
+
             if ($time)
 //                return $_d[2] . $sparator . $_d[1] . $sparator . ($_d[0] + 543) . ' ' . $_time;
                 return $_d[2] . $sparator . $_d[1] . $sparator . ($_d[0]) . ' ' . $_time;
@@ -17,6 +18,14 @@ class Tools {
 //                return $_d[2] . $sparator . $_d[1] . $sparator . ($_d[0] + 543);
         }else {
             return '-';
+        }
+    }
+
+    public static function subText($text, $legth = 200, $textEnd = '...') {
+        if (strlen($text) > $legth) {
+            return iconv_substr($text, 0, $legth, "UTF-8") . $textEnd;
+        } else {
+            return $text;
         }
     }
 

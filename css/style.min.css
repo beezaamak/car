@@ -4,3 +4,6 @@ label{
 label span.required{
     color: red;
 }
+.form_image{
+    width: 400px;
+}

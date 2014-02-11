@@ -10,6 +10,7 @@ class PaperApprovalController extends Controller {
         return array(
             'accessControl', // perform access control for CRUD operations
             'postOnly + delete', // we only allow deletion via POST request
+            'checkMember + view, update, delete'
         );
     }
 
@@ -24,6 +25,16 @@ class PaperApprovalController extends Controller {
         );
     }
 
+    public function filtercheckMember($filterChain) {
+        if ($id = Yii::app()->getRequest()->getParam('id')) {
+            $model = $this->loadModel($id);
+            if ($model->member_id == Yii::app()->user->id)
+                $filterChain->run();
+            else
+                throw new CHttpException(404, "คุณไม่สามารถทำรายการได้ กรุณาลองใหม่อีกครั้ง");
+        }
+    }
+
     public function actionView($id) {
         $this->render('view', array(
             'model' => $this->loadModel($id),
@@ -33,7 +44,8 @@ class PaperApprovalController extends Controller {
     public function actionCreate() {
         $model = new PaperApproval;
         $model->member_id = Yii::app()->user->id;
-        $model->create_at = date('Y-m-d');
+        $model->status = 0;
+        $model->create_at = date('Y-m-d H:i:s');
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);

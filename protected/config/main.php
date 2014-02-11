@@ -7,6 +7,7 @@
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'หน่วยยานพาหนะ มหาวิทยาลัยราชภัฏสกลนคร',
+    'timeZone' => 'Asia/bangkok',
     // preloading 'log' component
     'preload' => array('log'),
     'language' => 'th',
@@ -34,12 +35,12 @@ return array(
             'allowAutoLogin' => true,
             'loginUrl' => array('/site/index'),
         ),
-        'clientScript' => array(
-            'scriptMap' => array(
+//        'clientScript' => array(
+//            'coreScripts' => array(
 //                'jquery.js' => true,
 //                'jquery.min.js' => true,
-            ),
-        ),
+//            ),
+//        ),
         // uncomment the following to enable URLs in path-format
         /*
           'urlManager'=>array(
@@ -90,5 +91,6 @@ return array(
         'pageSize' => 20,
         'summaryTextGrid' => 'แสดงจาก {start}-{end} จากทั้งหมด {count}',
         'summaryTextList' => 'แสดงจาก {start}-{end} จากทั้งหมด {count}',
+        'pathUpload' => './upload/',
     ),
 );

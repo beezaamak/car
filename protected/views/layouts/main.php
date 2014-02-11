@@ -36,6 +36,13 @@
             } catch (err) {
             }
         </script>
+        <link href="<?php echo Yii::app()->baseUrl; ?>/facefiles/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+        <script src="<?php echo Yii::app()->baseUrl; ?>/facefiles/facebox.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $('a[rel*=facebox]').facebox()
+            })
+        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="<?php echo Yii::app()->baseUrl; ?>/css/my-css.css" rel="stylesheet" type="text/css" />
     </head>

@@ -28,8 +28,12 @@
                         <ul class="list-2">
                             <li><a href="#">สวัสดี : <?php echo Yii::app()->user->name; ?> </a></li>
                             <!--<li><a href="change_pass.html">เปลี่ยนรหัสผ่าน</a></li>-->
-                            <li><a href="<?php echo Yii::app()->createUrl('/paperApproval/create'); ?>">ขออนุญาตใช้รถยนส่วนกลาง</a></li>
-                            <li><a href="<?php echo Yii::app()->createUrl('/paperApproval'); ?>">รายการขออนุญาตใช้รถยนส่วนกลาง</a></li>
+                            <?php if (!Yii::app()->user->isAdmin()) { ?>
+                                <li><a href="<?php echo Yii::app()->createUrl('/paperApproval/create'); ?>">ขออนุญาตใช้รถยนส่วนกลาง</a></li>
+                                <li><a href="<?php echo Yii::app()->createUrl('/paperApproval'); ?>">รายการขออนุญาตใช้รถยนส่วนกลาง</a></li>
+                            <?php } else { ?>
+                                <li><a href="<?php echo Yii::app()->createUrl('/admin'); ?>">หน้าผู้ดูแลระบบ</a></li>
+                            <?php } ?>
                         </ul>
                         <?php
                     }
@@ -59,9 +63,9 @@
                         </div>
                         <ul class="list-2">
                             <li></li>
-                            <li><a href="car.html">ข้อมูลรถยนต์ส่วนกลาง</a></li>
-                            <li><a href="cardri.html">ข้อมูลพนักงานขับรถ</a></li>
-                            <li><a href="how_to.html">วิธีการขออนุญาตใช้รถยนต์ส่วนกลาง</a></li>
+                            <li><a href="<?php echo Yii::app()->createUrl('/carList'); ?>">ข้อมูลรถยนต์ส่วนกลาง</a></li>
+                            <li><a href="<?php echo Yii::app()->createUrl('/personnelList'); ?>">ข้อมูลพนักงานขับรถ</a></li>
+                            <li><a href="<?php echo Yii::app()->createUrl('/site/howto'); ?>">วิธีการขออนุญาตใช้รถยนต์ส่วนกลาง</a></li>
                         </ul>
                     </div>
                 </div>

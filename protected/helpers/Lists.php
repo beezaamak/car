@@ -17,5 +17,9 @@ class Lists {
     public static function place() {
         return CHtml::listData(Place::model()->desc()->findAll(), 'place_id', 'name');
     }
+    
+    public static function car(){
+        return CHtml::listData(Car::model()->desc()->notWorking()->findAll(), 'car_id', 'license_no');
+    }
 
 }

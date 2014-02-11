@@ -32,36 +32,68 @@ class PersonnelController extends Controller {
 
     public function actionCreate() {
         $model = new Personnel;
+        $file = new File;
         $model->create_at = date('Y-m-d');
-        
+
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if (isset($_POST['Personnel'])) {
+        if (isset($_POST['Personnel']) && isset($_POST['File'])) {
             $model->attributes = $_POST['Personnel'];
+            $file->attributes = $_POST['File'];
+
+            $file->file = CUploadedFile::getInstance($file, 'file');
+            if ($file->file != null) {
+                if (file_exists(Yii::app()->params['pathUpload'] . $model->pic) && $model->pic != 'noimage.jpg')
+                    unlink(Yii::app()->params['pathUpload'] . $model->pic);
+
+                if ($file->file != null) {
+                    $filename = time() . '.' . $file->file->getExtensionName();
+                    $file->file->saveAs(Yii::app()->params['pathUpload'] . $filename);
+                    $model->pic = $filename;
+                }
+            }
+
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->personnel_id));
         }
 
         $this->render('create', array(
             'model' => $model,
+            'file' => $file,
         ));
     }
 
     public function actionUpdate($id) {
         $model = $this->loadModel($id);
+        $file = new File;
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if (isset($_POST['Personnel'])) {
+        if (isset($_POST['Personnel']) && isset($_POST['File'])) {
             $model->attributes = $_POST['Personnel'];
+            $file->attributes = $_POST['File'];
+
+            $file->file = CUploadedFile::getInstance($file, 'file');
+            if ($file->file != null) {
+                if (file_exists(Yii::app()->params['pathUpload'] . $model->pic) && $model->pic != 'noimage.jpg')
+                    unlink(Yii::app()->params['pathUpload'] . $model->pic);
+
+                if ($file->file != null) {
+                    $filename = time() . '.' . $file->file->getExtensionName();
+                    $file->file->saveAs(Yii::app()->params['pathUpload'] . $filename);
+                    $model->pic = $filename;
+                }
+            }
+
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->personnel_id));
         }
 
         $this->render('update', array(
             'model' => $model,
+            'file' => $file,
         ));
     }
 

@@ -8,17 +8,18 @@ class CarBase extends CActiveRecord {
 
     public function rules() {
         return array(
-            array('license_no, date_registration, brand_id, car_no, engine_no, personnel_id, create_at', 'required'),
+            array('license_no, date_registration, brand_id, car_no, engine_no, personnel_id, pic, create_at', 'required'),
             array('brand_id, personnel_id', 'numerical', 'integerOnly' => true),
             array('license_no, car_no, engine_no', 'length', 'max' => 100),
-            array('car_id, license_no, date_registration, brand_id, car_no, engine_no, personnel_id, create_at', 'safe', 'on' => 'search'),
+            array('pic', 'length', 'max' => 255),
+            array('car_id, license_no, date_registration, brand_id, car_no, engine_no, personnel_id, pic, create_at', 'safe', 'on' => 'search'),
         );
     }
 
     public function relations() {
         return array(
-            'personnel' => array(self::BELONGS_TO, 'Personnel', 'personnel_id'),
             'brand' => array(self::BELONGS_TO, 'Brand', 'brand_id'),
+            'personnel' => array(self::BELONGS_TO, 'Personnel', 'personnel_id'),
         );
     }
 
@@ -31,6 +32,7 @@ class CarBase extends CActiveRecord {
             'car_no' => 'เลขตัวรถ',
             'engine_no' => 'เลขเเครื่องยนต์',
             'personnel_id' => 'พนักงานขับรถ',
+            'pic' => 'Pic',
             'create_at' => 'วันที่บันทึก',
         );
     }
@@ -55,10 +57,14 @@ class CarBase extends CActiveRecord {
         $criteria->compare('car_no', $this->car_no, true);
         $criteria->compare('engine_no', $this->engine_no, true);
         $criteria->compare('personnel_id', $this->personnel_id);
+        $criteria->compare('pic', $this->pic, true);
         $criteria->compare('create_at', $this->create_at, true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
         ));
     }
 
