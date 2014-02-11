@@ -44,18 +44,35 @@ $this->widget('zii.widgets.CDetailView', array(
             'name' => 'back_time',
             'value' => Tools::DateTimeToShow($model->back_time, '/', true),
         ),
-        'status',
+        array(
+            'name' => 'status',
+            'value' => Status::$paper[$model->status],
+        ),
+        array(
+            'type' => 'raw',
+            'name' => 'file',
+            'value' => CHtml::link($model->file, Yii::app()->params['pathUpload'] . $model->file, array(
+                'target' => '_blank',
+            )),
+        ),
         'create_at',
     ),
 ));
 ?>
-<div class="row buttons">
-    <?php
-    echo CHtml::button('แก้ไขเอกสาร', array(
-        'onClick' => 'window.location="' .
-        Yii::app()->createUrl('paperApproval/update', array(
-            'id' => $model->paper_approval_id
-        )) . '"',
-    ));
+
+<?php
+if ($model->status == 0) {
     ?>
-</div>
+    <div class="row buttons">
+        <?php
+        echo CHtml::button('แก้ไขเอกสาร', array(
+            'onClick' => 'window.location="' .
+            Yii::app()->createUrl('paperApproval/update', array(
+                'id' => $model->paper_approval_id
+            )) . '"',
+        ));
+        ?>
+    </div>
+    <?php
+}
+?>

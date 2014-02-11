@@ -8,11 +8,14 @@
         // There is a call to performAjaxValidation() commented in generated controller code.
         // See class documentation of CActiveForm for details on this.
         'enableAjaxValidation' => false,
+        'htmlOptions' => array(
+            'enctype' => 'multipart/form-data'
+        ),
     ));
     ?>
 
 
-    <?php echo $form->errorSummary($model); ?>
+    <?php echo $form->errorSummary(array($model, $file)); ?>
 
     <div class="row div50">
         <?php echo $form->labelEx($model, 'paper_no'); ?>
@@ -109,6 +112,12 @@
         ));
         ?>
         <?php echo $form->error($model, 'back_time'); ?>
+    </div>
+    
+    <div class="row">
+        <?php echo $form->labelEx($file, 'file'); ?>
+        <?php echo $form->fileField($file, 'file'); ?>
+        <?php echo $form->error($file, 'file'); ?>
     </div>
 
     <div class="row buttons">

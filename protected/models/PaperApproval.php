@@ -7,9 +7,9 @@ class PaperApproval extends PaperApprovalBase {
             array('paper_no, member_id, tel, go, request, length_go, num_person, responsible, place_id, departure_time, back_time, status, create_at', 'required'),
             array('member_id, place_id, status', 'numerical', 'integerOnly' => true),
             array('paper_no', 'length', 'max' => 100),
-            array('tel, go, request, responsible, length_go', 'length', 'max' => 255),
+            array('file, go, request, responsible, length_go', 'length', 'max' => 255),
             array('num_person', 'length', 'max' => 10),
-            array('paper_approval_id, paper_no, member_id, tel, go, request, length_go, num_person, responsible, place_id, departure_time, back_time, status, create_at', 'safe', 'on' => 'search'),
+            array('file, paper_approval_id, paper_no, member_id, tel, go, request, length_go, num_person, responsible, place_id, departure_time, back_time, status, create_at', 'safe', 'on' => 'search'),
             // เพิ่มเติม
             array('paper_no', 'unique', 'message' => '{attribute} มีอยู่ในระบบแล้ว กรุณาตรวจสอบ'),
             array('tel', 'length', 'max' => 10),
@@ -41,6 +41,7 @@ class PaperApproval extends PaperApprovalBase {
             'departure_time' => 'ออกเดินทาง เวลา',
             'back_time' => 'กลับ เวลา',
             'status' => 'สถานะ',
+            'file' => 'ไฟล์แนบ',
             'create_at' => 'วันที่ร้องขอ',
         );
     }

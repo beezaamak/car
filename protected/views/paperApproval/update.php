@@ -1,6 +1,5 @@
 
 <?php
-
 $this->breadcrumbs = array(
     $this->nameController => array('admin'),
     $model->paper_no => array('view', 'id' => $model->paper_approval_id),
@@ -16,4 +15,9 @@ $this->menu = array(
 
 <h2><?php echo $this->labelController['Update']; ?> # <?php echo $model->paper_no; ?></h2>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php
+$this->renderPartial('_form', array(
+    'model' => $model,
+    'file' => $file,
+));
+?>

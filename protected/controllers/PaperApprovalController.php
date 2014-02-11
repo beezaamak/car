@@ -43,6 +43,8 @@ class PaperApprovalController extends Controller {
 
     public function actionCreate() {
         $model = new PaperApproval;
+        $file = new FileOther();
+
         $model->member_id = Yii::app()->user->id;
         $model->status = 0;
         $model->create_at = date('Y-m-d H:i:s');
@@ -50,31 +52,64 @@ class PaperApprovalController extends Controller {
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if (isset($_POST['PaperApproval'])) {
+        if (isset($_POST['PaperApproval']) && isset($_POST['FileOther'])) {
             $model->attributes = $_POST['PaperApproval'];
+            $file->attributes = $_POST['FileOther'];
+
+            $file->file = CUploadedFile::getInstance($file, 'file');
+            if ($file->file != null) {
+                $filename = time() . '.' . $file->file->getExtensionName();
+                $file->file->saveAs(Yii::app()->params['pathUpload'] . $filename);
+                $model->file = $filename;
+            }
+
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->paper_approval_id));
         }
 
         $this->render('create', array(
             'model' => $model,
+            'file' => $file,
         ));
     }
 
     public function actionUpdate($id) {
         $model = $this->loadModel($id);
+        $file = new FileOther();
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if (isset($_POST['PaperApproval'])) {
+        if (isset($_POST['PaperApproval']) && isset($_POST['FileOther'])) {
             $model->attributes = $_POST['PaperApproval'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->paper_approval_id));
+            $file->attributes = $_POST['FileOther'];
+
+            $file->file = CUploadedFile::getInstance($file, 'file');
+//            echo '<pre>';
+//            print_r($file->file); die;
+            $model->validate();
+            $file->validate();
+            if ($model->getErrors() == null && $file->getErrors() == null) {
+                if ($file->file != null) {
+                    if ($model->file != null)
+                        if (file_exists(Yii::app()->params['pathUpload'] . $model->file))
+                            unlink(Yii::app()->params['pathUpload'] . $model->file);
+
+                    if ($file->file != null) {
+                        $filename = time() . '.' . $file->file->getExtensionName();
+                        $file->file->saveAs(Yii::app()->params['pathUpload'] . $filename);
+                        $model->file = $filename;
+                    }
+                }
+
+                if ($model->save())
+                    $this->redirect(array('view', 'id' => $model->paper_approval_id));
+            }
         }
 
         $this->render('update', array(
             'model' => $model,
+            'file' => $file,
         ));
     }
 

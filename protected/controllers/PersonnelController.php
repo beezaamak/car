@@ -44,14 +44,11 @@ class PersonnelController extends Controller {
 
             $file->file = CUploadedFile::getInstance($file, 'file');
             if ($file->file != null) {
-                if (file_exists(Yii::app()->params['pathUpload'] . $model->pic) && $model->pic != 'noimage.jpg')
-                    unlink(Yii::app()->params['pathUpload'] . $model->pic);
-
-                if ($file->file != null) {
-                    $filename = time() . '.' . $file->file->getExtensionName();
-                    $file->file->saveAs(Yii::app()->params['pathUpload'] . $filename);
-                    $model->pic = $filename;
-                }
+                $filename = time() . '.' . $file->file->getExtensionName();
+                $file->file->saveAs(Yii::app()->params['pathUpload'] . $filename);
+                $model->pic = $filename;
+            } else {
+                $model->pic = 'noimage.jpg';
             }
 
             if ($model->save())
